@@ -216,6 +216,7 @@ tokio-postgres = { version = "0.5.5", optional = true, features = ["runtime", "w
 thread_local = "= 1.0.1"
 dashmap = "3"
 encoding_rs = { version = "0.8", features = ["serde"] }
+redis = { version = "0.17.0", features = ["connection-manager"], optional = true }
 
 # For WASM
 vector-wasm = { path = "lib/vector-wasm", optional = true }
@@ -355,6 +356,7 @@ sources-metrics = [
   "sources-prometheus",
   "sources-statsd",
   "sources-vector",
+  "sources-redis",
 ]
 sources-apache_metrics = []
 sources-aws_ecs_metrics = []
@@ -388,6 +390,7 @@ sources-utils-tcp-socket = []
 sources-utils-tls = []
 sources-utils-udp = ["socket2"]
 sources-utils-unix = []
+sources-redis = ["redis"]
 
 # Transforms
 transforms = ["transforms-logs", "transforms-metrics"]
@@ -505,7 +508,8 @@ sinks-metrics = [
   "sinks-prometheus",
   "sinks-sematext",
   "sinks-statsd",
-  "sinks-vector"
+  "sinks-vector",
+  "sinks-redis",
 ]
 sinks-aws_cloudwatch_logs = ["rusoto_core", "rusoto_credential", "rusoto_signature", "rusoto_sts", "rusoto_logs"]
 sinks-aws_cloudwatch_metrics = ["rusoto_core", "rusoto_credential", "rusoto_signature", "rusoto_sts", "rusoto_cloudwatch"]
@@ -539,6 +543,7 @@ sinks-statsd = ["tokio-util/udp", "sinks-utils-udp"]
 sinks-vector = ["sinks-utils-udp"]
 sinks-pulsar = ["avro-rs", "pulsar"]
 sinks-utils-udp = ["socket2"]
+sinks-redis = ["redis"]
 
 # Identifies that the build is a nightly build
 nightly = []
@@ -563,6 +568,7 @@ all-integration-tests = [
   "prometheus-integration-tests",
   "pulsar-integration-tests",
   "splunk-integration-tests",
+  "redis-integration-tests",
 ]
 
 aws-integration-tests = [
@@ -600,6 +606,7 @@ postgresql_metrics-integration-tests = ["sources-postgresql_metrics"]
 prometheus-integration-tests = ["sinks-prometheus", "sources-prometheus", "bytesize"]
 pulsar-integration-tests = ["sinks-pulsar"]
 splunk-integration-tests = ["sinks-splunk_hec", "warp"]
+redis-integration-tests = ["sources-redis", "sinks-redis"]
 
 shutdown-tests = ["sources","sinks-console","sinks-prometheus","sinks-blackhole","unix","rdkafka","transforms-log_to_metric","transforms-lua"]
 disable-resolv-conf = []
