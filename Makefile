@@ -853,6 +853,40 @@ ifeq ($(AUTODESPAWN), true)
 	$(MAKE) -k stop-integration-splunk
 endif
 
+.PHONY: start-integration-redis
+start-integration-redis:
+ifeq ($(CONTAINER_TOOL),podman)
+	$(CONTAINER_TOOL) $(CONTAINER_ENCLOSURE) create --replace --name vector-test-integration-redis -p 6379:6379
+	$(CONTAINER_TOOL) run -d --$(CONTAINER_ENCLOSURE)=vector-test-integration-redis  --name vector_redis \
+	 redis
+else
+	$(CONTAINER_TOOL) $(CONTAINER_ENCLOSURE) create vector-test-integration-redis
+	$(CONTAINER_TOOL) run -d --$(CONTAINER_ENCLOSURE)=vector-test-integration-redis -p 6379:6379 --name vector_redis \
+	 redis
+endif
+
+.PHONY: stop-integration-redis
+stop-integration-redis:
+	$(CONTAINER_TOOL) rm --force vector_redis 2>/dev/null; true
+ifeq ($(CONTAINER_TOOL),podman)
+	$(CONTAINER_TOOL) $(CONTAINER_ENCLOSURE) stop --name=vector-test-integration-redis 2>/dev/null; true
+	$(CONTAINER_TOOL) $(CONTAINER_ENCLOSURE) rm --force --name vector-test-integration-redis 2>/dev/null; true
+else
+	$(CONTAINER_TOOL) $(CONTAINER_ENCLOSURE) rm vector-test-integration-redis 2>/dev/null; true
+endif
+
+.PHONY: test-integration-redis
+test-integration-redis: ## Runs Redis integration tests
+ifeq ($(AUTOSPAWN), true)
+	-$(MAKE) -k stop-integration-redis
+	$(MAKE) start-integration-redis
+	sleep 10 # Many services are very slow... Give them a sec..
+endif
+	${MAYBE_ENVIRONMENT_EXEC} cargo test --no-fail-fast --no-default-features --features redis-integration-tests --lib ::redis:: -- --nocapture
+ifeq ($(AUTODESPAWN), true)
+	$(MAKE) -k stop-integration-redis
+endif
+
 .PHONY: test-e2e-kubernetes
 test-e2e-kubernetes: ## Runs Kubernetes E2E tests (Sorry, no `ENVIRONMENT=true` support)
 	@scripts/test-e2e-kubernetes.sh
