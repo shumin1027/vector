@@ -140,7 +140,7 @@ structopt = "0.3.21"
 indexmap = {version = "1.5.1", features = ["serde-1"]}
 http = "0.2"
 typetag = "0.1"
-toml = "0.5.7"
+toml = "0.5.8"
 syslog = "5"
 syslog_loose = { version = "0.7.0" }
 derive_is_enum_variant = "0.1.1"
