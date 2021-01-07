@@ -819,6 +819,12 @@ dependencies = [
 
 [[package]]
 name = "bytes"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e0dcbc35f504eb6fc275a6d20e4ebcda18cf50d40ba6fabff8c711fa16cb3b16"
+
+[[package]]
+name = "bytes"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ad1f8e949d755f9d79112b5bb46938e0ef9d3804a0b16dfab13aafcaa5f0fa72"
@@ -4847,7 +4853,7 @@ dependencies = [
  "rand 0.7.3",
  "regex",
  "tokio 0.2.24",
- "tokio-native-tls",
+ "tokio-native-tls 0.1.0",
  "tokio-util 0.3.1",
  "url",
 ]
@@ -6733,6 +6739,20 @@ dependencies = [
 
 [[package]]
 name = "tokio"
+version = "0.3.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "720ba21c25078711bf456d607987d95bce90f7c3bea5abe1db587862e7a1e87c"
+dependencies = [
+ "autocfg 1.0.1",
+ "bytes 0.6.0",
+ "libc",
+ "memchr",
+ "mio 0.7.7",
+ "pin-project-lite 0.2.0",
+]
+
+[[package]]
+name = "tokio"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d258221f566b6c803c7b4714abadc080172b272090cdc5e244a6d4dd13c3a6bd"
@@ -6783,6 +6803,16 @@ checksum = "cd608593a919a8e05a7d1fc6df885e40f6a88d3a70a3a7eff23ff27964eda069"
 dependencies = [
  "native-tls",
  "tokio 0.2.24",
+]
+
+[[package]]
+name = "tokio-native-tls"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "501c8252b73bd01379aaae1521523c2629ff1bc6ea46c29e0baff515cee60f1b"
+dependencies = [
+ "native-tls",
+ "tokio 0.3.6",
 ]
 
 [[package]]
@@ -6871,10 +6901,23 @@ checksum = "6d9e878ad426ca286e4dcae09cbd4e1973a7f8987d97570e2469703dd7f5720c"
 dependencies = [
  "futures-util",
  "log",
- "native-tls",
  "pin-project 0.4.27",
  "tokio 0.2.24",
- "tokio-native-tls",
+ "tungstenite",
+]
+
+[[package]]
+name = "tokio-tungstenite"
+version = "0.12.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0381c1e6e08908317cee104781ca48afe03f37cc857792b85f01f9828fb55ba3"
+dependencies = [
+ "futures-util",
+ "log",
+ "native-tls",
+ "pin-project 1.0.2",
+ "tokio 0.3.6",
+ "tokio-native-tls 0.2.0",
  "tungstenite",
 ]
 
@@ -7642,7 +7685,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tokio 0.2.24",
- "tokio-tungstenite",
+ "tokio-tungstenite 0.12.0",
  "url",
  "uuid 0.8.1",
  "weak-table",
@@ -7764,7 +7807,7 @@ dependencies = [
  "serde_json",
  "serde_urlencoded 0.6.1",
  "tokio 0.2.24",
- "tokio-tungstenite",
+ "tokio-tungstenite 0.11.0",
  "tower-service",
  "tracing 0.1.22",
  "tracing-futures 0.2.4",
