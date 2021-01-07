@@ -458,4 +458,6 @@ urls: {
 	yum:                                                      "https://en.wikipedia.org/wiki/Yum_(software)"
 	zlib:                                                     "https://www.zlib.net"
 	zstd:                                                     "https://zstd.net"
+	redis:                                                    "https://redis.io"
+	redis_rs:                                                 "https://github.com/mitsuhiko/redis-rs"
 }
