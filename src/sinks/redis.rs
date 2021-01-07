@@ -418,7 +418,7 @@ mod integration_tests {
         let key = format!("test-{}", random_string(10));
         debug!("Test key name: {}.", key);
         let mut rng = rand::thread_rng();
-        let num_events = rng.gen_range(1000, 2000);
+        let num_events = rng.gen_range(1000..2000);
         debug!("Test events num: {}.", num_events);
 
         let cnf = RedisSinkConfig {
@@ -457,7 +457,7 @@ mod integration_tests {
         let key = format!("test-{}", random_string(10));
         debug!("Test key name: {}.", key);
         let mut rng = rand::thread_rng();
-        let num_events = rng.gen_range(1000, 2000);
+        let num_events = rng.gen_range(1000..2000);
         debug!("Test events num: {}.", num_events);
 
         let cnf = RedisSinkConfig {
@@ -496,7 +496,7 @@ mod integration_tests {
         let key = format!("test-{}", random_string(10));
         debug!("Test key name: {}.", key);
         let mut rng = rand::thread_rng();
-        let num_events = rng.gen_range(1000, 2000);
+        let num_events = rng.gen_range(1000..2000);
         debug!("Test events num: {}.", num_events);
 
         let client = redis::Client::open(REDIS_SERVER).unwrap();
