@@ -216,7 +216,7 @@ tokio-postgres = { version = "0.5.5", optional = true, features = ["runtime", "w
 thread_local = "= 1.0.1"
 dashmap = "3"
 encoding_rs = { version = "0.8", features = ["serde"] }
-redis = { version = "0.17.0", features = ["connection-manager"], optional = true }
+redis = { version = "0.19.0", features = ["connection-manager","async-std-comp"], optional = true }
 
 # For WASM
 vector-wasm = { path = "lib/vector-wasm", optional = true }
