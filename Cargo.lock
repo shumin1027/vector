@@ -813,15 +813,15 @@ name = "bytes"
 version = "0.5.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0e4cec68f03f32e44924783795810fa50a7035d8c8ebe78580ad7e6c703fba38"
-dependencies = [
- "serde",
-]
 
 [[package]]
 name = "bytes"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ad1f8e949d755f9d79112b5bb46938e0ef9d3804a0b16dfab13aafcaa5f0fa72"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "bytesize"
@@ -986,7 +986,7 @@ dependencies = [
 name = "codec"
 version = "0.1.0"
 dependencies = [
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "serde_json",
  "tokio-util 0.3.1",
  "tracing 0.1.22",
@@ -1974,7 +1974,7 @@ dependencies = [
 name = "file-source"
 version = "0.1.0"
 dependencies = [
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "chrono",
  "crc",
  "dashmap 4.0.1",
@@ -5288,7 +5288,7 @@ checksum = "3b181ba2dcf07aaccad5448e8ead58db5b742cf85dfe035e2227f137a539a189"
 name = "remap-cli"
 version = "0.1.0"
 dependencies = [
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "exitcode",
  "remap-functions",
  "remap-lang",
@@ -5303,7 +5303,7 @@ name = "remap-functions"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "chrono",
  "cidr-utils",
  "grok",
@@ -5331,7 +5331,7 @@ name = "remap-lang"
 version = "0.1.0"
 dependencies = [
  "bitflags",
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "chrono",
  "criterion",
  "dyn-clone",
@@ -6140,7 +6140,7 @@ dependencies = [
 name = "shared"
 version = "0.1.0"
 dependencies = [
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "chrono",
  "nom 6.0.1",
  "serde",
@@ -7485,7 +7485,7 @@ dependencies = [
  "bloom",
  "bollard",
  "built",
- "bytes 0.5.6",
+ "bytes 1.0.0",
  "bytesize",
  "chrono",
  "cidr-utils",
