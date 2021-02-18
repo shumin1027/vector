@@ -5184,7 +5184,7 @@ dependencies = [
  "num_enum",
  "prost 0.6.1",
  "prost-build 0.6.1",
- "prost-types 0.6.1",
+ "prost-types 0.7.0",
  "shared",
  "snafu",
 ]
@@ -8184,7 +8184,7 @@ dependencies = [
  "prometheus-parser",
  "prost 0.6.1",
  "prost-build 0.6.1",
- "prost-types 0.6.1",
+ "prost-types 0.7.0",
  "pulsar",
  "rand 0.8.3",
  "rand_distr",
